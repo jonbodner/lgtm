@@ -25,7 +25,7 @@ type Config struct {
 
 var (
 	approvals       = envflag.Int("LGTM_APPROVALS", 2, "")
-	pattern         = envflag.String("LGTM_PATTERN", "(?i)LGTM", "")
+	pattern         = envflag.String("LGTM_PATTERN", `(?i)^LGTM\s*(\S*)`, "")
 	team            = envflag.String("LGTM_TEAM", "MAINTAINERS", "")
 	selfApprovalOff = envflag.Bool("LGTM_SELF_APPROVAL_OFF", false, "")
 )
