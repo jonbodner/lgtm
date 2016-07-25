@@ -28,6 +28,8 @@ var (
 	pattern         = envflag.String("LGTM_PATTERN", `(?i)^LGTM\s*(\S*)`, "")
 	team            = envflag.String("LGTM_TEAM", "MAINTAINERS", "")
 	selfApprovalOff = envflag.Bool("LGTM_SELF_APPROVAL_OFF", false, "")
+	approvalAlg     = envflag.String("LGTM_APPROVAL_ALGORITHM", "simple", "")
+	versionAlg      = envflag.String("LGTM_VERSION_ALGORITHM", "semver", "")
 )
 
 // ParseConfig parses a projects .lgtm file
@@ -63,10 +65,10 @@ func ParseConfigStr(data string) (*Config, error) {
 		c.Team = *team
 	}
 	if len(c.ApprovalAlg) == 0 {
-		c.ApprovalAlg = "simple"
+		c.ApprovalAlg = *approvalAlg
 	}
 	if len(c.VersionAlg) == 0 {
-		c.VersionAlg = "semver"
+		c.VersionAlg = *versionAlg
 	}
 	if c.SelfApprovalOff == false {
 		c.SelfApprovalOff = *selfApprovalOff
