@@ -21,7 +21,7 @@ gen_migration:
 	go generate github.com/lgtmco/lgtm/store/migration
 
 build:
-	# static linking sqlite seems to break DNS go build --ldflags '-extldflags "-static" -X github.com/lgtmco/lgtm/version.VersionDev=$(CI_BUILD_NUMBER)' -o lgtm
+	@# static linking sqlite seems to break DNS go build --ldflags '-extldflags "-static" -X github.com/lgtmco/lgtm/version.VersionDev=$(CI_BUILD_NUMBER)' -o lgtm
 	go build --ldflags '-X github.com/lgtmco/lgtm/version.VersionDev=$(CI_BUILD_NUMBER)' -o lgtm
 
 test:
